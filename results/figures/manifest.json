@@ -1,0 +1,16 @@
+{
+  "data_sha256": "b4a7c31cf12f54c49c2a89d0f2acb855616c896f38a35033032331a22fb2b2de",
+  "plotting_versions": {
+    "matplotlib": "3.11.2",
+    "numpy": "2.5.3"
+  },
+  "cv_means": {
+    "V5": 0.6269182090379367,
+    "V6 candidate 1": 0.6292414092096779,
+    "V6 candidate 2": 0.6288870508320851
+  },
+  "files": {
+    "01_data_overview.png": "c59951098012becc7561cbf8abb2c2bb571a4760c4e8651d9f3a6a54d85aeb2a",
+    "02_model_comparison.png": "aa5bc7e37d516f993885cc85d88da98d55b3e53ee8da5ea53f720be516f05220"
+  }
+}

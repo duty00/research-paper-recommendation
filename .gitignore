@@ -1,0 +1,13 @@
+.venv/
+__pycache__/
+*.pyc
+data/
+assignment-data-mining-261/
+outputs/
+*.zip
+*.joblib
+.env
+kaggle.json
+
+.cache/
+assets/encoders/

@@ -1,0 +1,47 @@
+{
+  "recorded_as_of": "2026-10-27",
+  "reference": "V6 candidate 2",
+  "candidate": "bge_authors75_mix25",
+  "public_score": 0.66504,
+  "public_score_source": "Kaggle submission screenshot supplied by the team in the project conversation; no Kaggle API query.",
+  "private_score": null,
+  "classifier_seed": 261,
+  "fraction": 0.6,
+  "policy": "utility_half",
+  "aggregation": "probability",
+  "weights": {
+    "bge_authors75": 0.25,
+    "bge_svc_c4": 0.28125,
+    "e5base_c4_g2": 0.1875,
+    "old_v3": 0.28125
+  },
+  "validation": {
+    "folds": 7,
+    "seeds": [361, 1361],
+    "scores": [0.6295670034372014, 0.6282070982269686],
+    "mean": 0.628887050832085,
+    "baseline_v5_scores": [0.6269761550555039, 0.6268602630203696],
+    "mean_gain_over_v5": 0.0019688417941483016,
+    "paired_fold_wins": [5, 4],
+    "untouched_holdout": false,
+    "limitation": "Adaptive validation. Same rows reused across seeds and experiments; no independent Private evaluation."
+  },
+  "submission": {
+    "filename": "v6_candidate_2.csv",
+    "rows": 596,
+    "recommended": 358,
+    "zero_priority": 238,
+    "sha256": "31e9d52b555354168da504597eb671f97dee775533f2d09ae76d48c8f6e498aa"
+  },
+  "raw_input_sha256": {
+    "train.csv": "d591c126e1a7554895a72749f04ea95be199526d1b05ebe42803783d8be4822a",
+    "Test.csv": "735631a93b61a10947716bd1ad9eb61bd4ec25eeb4f946adc6e6de5e80413cb8",
+    "Submission.csv": "88a1d0ff0b3b00b8a380fe87d1b353e6cdf2045ef06a571c1149e2ffb8e38816"
+  },
+  "verified_environment": {
+    "os": "Windows x64",
+    "python": "3.12.10",
+    "runtime": "CPU; frozen ONNX encoders",
+    "dependencies": "requirements-semantic.txt (includes requirements.txt)"
+  }
+}
