@@ -7,8 +7,8 @@
 [![Python](https://img.shields.io/badge/Python-3.12-3776AB?logo=python&logoColor=white)](#setup)
 [![scikit-learn](https://img.shields.io/badge/scikit--learn-1.7.2-F7931E?logo=scikitlearn&logoColor=white)](#model)
 [![ONNX](https://img.shields.io/badge/ONNX%20Runtime-CPU-005CED)](#model)
-[![Tests](https://img.shields.io/badge/local%20tests-30%20passed-2EA44F)](#reproducibility)
-[![Public score](https://img.shields.io/badge/best%20Public-0.66504-7C3AED)](#results)
+[![Tests](https://img.shields.io/badge/local%20tests-39%20passed-2EA44F)](#reproducibility)
+[![Public score](https://img.shields.io/badge/best%20Public-0.66699-7C3AED)](#results)
 
 *CO3029 Data Mining · HCMUT · Team DMM*
 
@@ -16,7 +16,7 @@
 
 This is our solution to the [Assignment Data Mining - 261](https://www.kaggle.com/competitions/assignment-data-mining-261/overview) competition. Given papers rated by a reader, we train models to select new papers worth reading and rank them by preference. The experiments compare TF-IDF baselines with SVC and ordinal classifiers on frozen E5/BGE embeddings.
 
-The best submission, **V6 candidate 2**, scored **0.66504** on the Public leaderboard. The code includes data checks, experiment scripts, and a separate command to reproduce that submission from the original files.
+The best submission, **V8 candidate 1**, scored **0.66699** on the Public leaderboard. It combines the V6 ensemble with a semantic neighbor model. The frozen configuration and raw-data replay command are documented in [V8 experiment](docs/V8_EXPERIMENT.md). The V6 reference pipeline is retained below.
 
 ## Project information
 
@@ -31,7 +31,7 @@ The best submission, **V6 candidate 2**, scored **0.66504** on the Public leader
 
 ## Results
 
-The latest three submissions were compared using the same two 7-fold CV splits:
+The earlier V5 and V6 submissions were compared using the same two 7-fold CV splits:
 
 | Submission | Mean CV | Public score |
 |---|---:|---:|
@@ -57,7 +57,8 @@ The left panel shows the reported Public scores. In the right panel, each dot is
 | V4 candidate 1 | BGE-base SVC ensemble | 0.66016 |
 | V5 candidate 1 | E5-base SVC and ensemble refinement | 0.66154 |
 | V6 candidate 1 | E5-base metadata branch | 0.65835 |
-| **V6 candidate 2** | **BGE with author and venue features** | **0.66504** |
+| V6 candidate 2 | BGE with author and venue features | 0.66504 |
+| **V8 candidate 1** | **V6 ensemble + semantic neighbors** | **0.66699** |
 
 These are the scores recorded through **27 October 2026**. Experiment notes are in [EXPERIMENT_LOG.md](docs/EXPERIMENT_LOG.md). The selected configuration and reference hashes are in [REFERENCE_V6.json](docs/REFERENCE_V6.json).
 
@@ -237,7 +238,7 @@ Add `--refit` to train the classifier heads again before predicting. It reuses t
 .\.venv\Scripts\python.exe -m pip check
 ```
 
-The **30 tests** cover the metric, tie handling, RTF/Unicode, submission validation, duplicate grouping, training-only vocabularies, unseen authors and venues, and model serialization. Each run records dependency versions and input/code/output hashes in `manifest.json`. `RELEASE_FILES.sha256` lists source and documentation checksums. Exact CSV agreement on other platforms has not been checked.
+The **39 tests** cover the metric, tie handling, RTF/Unicode, submission validation, duplicate grouping, training-only vocabularies, unseen authors and venues, and model serialization. Each run records dependency versions and input/code/output hashes in `manifest.json`. `RELEASE_FILES.sha256` lists source and documentation checksums. Exact CSV agreement on other platforms has not been checked.
 
 ### Regenerate the figures
 
@@ -271,6 +272,14 @@ This reads the recorded aggregates in `results/figure_data.json` and writes PNGs
 Raw data, downloaded encoders, caches, outputs, and model bundles are excluded by `.gitignore`. The small aggregate result files and figures are included so the README renders after cloning.
 
 The other entry points (`improve.py`, `semantic.py`, `fusion.py`, `refine.py`, `upgrade.py`, and `metadata_refine.py`) retain the earlier model-search experiments and may require outputs from previous stages. `reproduce.py` fits the selected configuration directly. Use `--help` for script arguments.
+
+## V7 experiments
+
+The V7 additions test metadata SVC refinements and separate author/venue preference models against V6 candidate2. Local results are recorded in [V7 experiments](docs/V7_EXPERIMENT.md). Their CV results are separate from the Public results above.
+
+## V8 experiment
+
+The V8 ensemble scored **0.66699** on Public. Across three 7-fold splits, its mean local score was **0.629924**, compared with **0.629092** for the V6 reference. The frozen configuration, per-seed results and raw-data replay command are recorded in [V8 experiment](docs/V8_EXPERIMENT.md). Private results are pending.
 
 ## References
 
